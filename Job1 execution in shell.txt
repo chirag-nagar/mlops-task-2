@@ -1,0 +1,28 @@
+sudo mkdir  /root/mlopstask2
+sudo cp -rvf * /root/mlopstask2
+ 
+ 
+if sudo ls /root/mlopstask2/ | grep .php
+then
+if sudo docker ps -a | grep php_os
+then 
+sudo docker rm -f php_os
+sudo docker run -itd  -p 8081:80 -v /root/mlopstask2/.:/var/www/html/ --name php_os vimal13/apache-webserver-php 
+else
+sudo docker run -itd  -p 8081:80 -v /root/mlopstask2/.:/var/www/html/ --name php_os vimal13/apache-webserver-php 
+fi
+elif sudo ls /root/mlopstask2/ | grep .html
+then
+if sudo docker ps -a | grep html_os
+then 
+sudo docker rm -f html_os
+sudo docker run -itd  -p 8081:80 -v /root/mlopstask2/.:/usr/local/apache2/htdocs/ --name html_os httpd
+else
+sudo docker run -itd  -p 8081:80 -v /root/mlopstask2/.:/usr/local/apache2/htdocs/ --name html_os httpd
+fi
+else
+sudo echo "not supported formate"
+fi
+
+sudo rm  -rvf /root/mlopstask2/
+ 
