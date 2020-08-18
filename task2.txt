@@ -1,0 +1,13 @@
+1. I create container image that’s has Jenkins installed  using dockerfile 
+
+2. When we launch this image, it automatically starts Jenkins service in the container.
+
+3. I create a job chain of job1, job2 and job3 using build pipeline plugin in Jenkins 
+
+4. Job1 : Pull  the Github repo automatically when some developers push repo to Github.By looking at the code or program file, Jenkins automatically start the respective language interpreter install image container to deploy code ( eg. If code is of  PHP, then Jenkins start the container that has PHP already installed ).Test your app if it  is working or not.If app is not working , then send email to developer with error messages.
+
+5. Job2 : For monitor If container where app is running fails due to any reson then it trigger next job that start docker container again.
+
+6. Job3 : Same as job1.
+
+
